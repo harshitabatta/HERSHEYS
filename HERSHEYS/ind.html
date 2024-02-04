@@ -2,12 +2,12 @@
 <html>
 
 <head>
-  
+ 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  
+ 
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  
+ 
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
@@ -44,7 +44,7 @@
       </div>
     </div>
 
-    
+   
     <header class="header_section">
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
@@ -65,7 +65,7 @@
               </li>
              
               <li class="nav-item">
-                <a class="nav-link" href="wordle.html">wordle</a>
+                <a class="nav-link" href="courses.html">courses</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="points.html">points</a>
@@ -185,7 +185,7 @@
 
 
 
-  
+ 
 
   <section class="why_section layout_padding">
     <div class="container">
@@ -243,6 +243,11 @@
       </div>
     </div>
   </section>
+  <div class="fact-container">
+    <h2>Fact of the Day</h2>
+    <p class="fact-text" id="fact-text">Loading...</p>
+    <button class="know-more-button" onclick="openMoreInfo()">Know More</button>
+  </div>
 
   
   <h1>Savings Goal</h1>
@@ -266,7 +271,7 @@
 
             if (goalAmount === enteredSavings) {
                 alert("Congratulations! You've reached your savings goal.");
-                addPoints(); 
+                addPoints(); // Call a function to update points
             }
         }
     
@@ -283,10 +288,55 @@
       
       window.location.href = 'points.html';
     }
-    </script>
+    
+  function toggleMenu() {
+    const navMenu = document.querySelector('.button-container');
+    navMenu.style.display = navMenu.style.display === 'block' ? 'none' : 'block';
+  }
 
+  
+  const financialFacts = [
+    {
+      fact: "The New York Stock Exchange (NYSE) is the largest stock exchange in the world by market capitalization.",
+      link: "https://www.nyse.com"
+    },
+    {
+      fact: "The concept of insurance dates back to ancient civilizations such as Babylonians, Greeks, and Romans.",
+      link: "https://en.wikipedia.org/wiki/History_of_insurance"
+    },
+    {
+      fact: "The first credit card was introduced in 1950 by Diners Club, allowing consumers to pay for their purchases with a card rather than cash.",
+      link: "https://www.history.com/topics/inventions/history-of-credit-cards"
+    },
+    {
+      fact: "The United States dollar ($) is the most widely used currency in the world and is known as the world's primary reserve currency.",
+      link: "https://www.federalreserve.gov/faqs/currency_12770.htm"
+    }
+  ];
 
+ 
+  function displayFact() {
+    const randomIndex = Math.floor(Math.random() * financialFacts.length);
+    const factText = document.getElementById("fact-text");
+    factText.textContent = financialFacts[randomIndex].fact;
+    factText.dataset.link = financialFacts[randomIndex].link; 
+  }
 
+ 
+  function openMoreInfo() {
+    const factText = document.getElementById("fact-text");
+    const link = factText.dataset.link;
+    if (link) {
+      window.open(link, "_blank"); 
+    }
+  }
+  function openDataAnalytics() {
+    window.location.href = "data_analytics.html"; 
+  }
+
+  
+  displayFact();
+</script>
   <input type="file" id="fileInput" accept=".xls, .xlsx">
 <button onclick="uploadFile()">Upload Excel File</button>
 
@@ -294,7 +344,7 @@
   button {
     background-color: #4CAF50; 
     color: white; 
-    padding: 10px 20px; 
+    padding: 10px 20px;
     border: none; 
     cursor: pointer; 
 }
@@ -337,12 +387,12 @@ document.getElementById('fileInput').addEventListener('change', function() {
   </script>
   
   <script type="text/javascript" src="js/bootstrap.js"></script>
-  
+ 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
   </script>
   
   <script type="text/javascript" src="js/custom.js"></script>
-  
+
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
   </script>
   
